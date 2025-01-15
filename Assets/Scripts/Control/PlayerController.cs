@@ -1,6 +1,7 @@
 using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
+using RPG.Core;
 
 namespace RPG.Control
 {
@@ -8,6 +9,7 @@ namespace RPG.Control
     {
         private Mover _mover;
         private Fighter _fighter;
+        private Health _health;
 
         private void Start()
         {
@@ -22,11 +24,22 @@ namespace RPG.Control
             {
                 Debug.LogError("Fighter is Null!");
             }
+
+            _health = GetComponent<Health>();
+            if (_health == null)
+            {
+                Debug.LogError("Health is Dead!");
+            }
         }
 
         private void Update()
         {
-            if(InteractWithCombat())
+            if (_health.IsDead())
+            {
+                return;
+            }
+
+            if (InteractWithCombat())
             {
                 return;
             }
@@ -43,8 +56,13 @@ namespace RPG.Control
                 foreach (RaycastHit hit in hits)
                 {
                     CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+                    
+                    if(target == null)
+                    {
+                        continue;
+                    }
 
-                    if(!_fighter.CanAttack(target))
+                    if(!_fighter.CanAttack(target.gameObject))
                     {
                         continue;
                     }
@@ -55,9 +73,9 @@ namespace RPG.Control
                      * If no code is ran if the mouse button isn't clicked,
                      * it can't raycast and see what it's hovering over.
                     */
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButton(0))
                     {
-                        _fighter.Attack(target);
+                        _fighter.Attack(target.gameObject);
                     }
                     
                     return true;

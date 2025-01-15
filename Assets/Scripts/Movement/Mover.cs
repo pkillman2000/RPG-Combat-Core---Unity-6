@@ -11,6 +11,8 @@ namespace RPG.Movement
         private Animator _animator;
         private Fighter _fighter;
         private ActionScheduler _actionScheduler;
+        private Health _health;
+
         private void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -36,10 +38,17 @@ namespace RPG.Movement
             {
                 Debug.LogError("Action Scheduler is Null!");
             }
+
+            _health = GetComponent<Health>();
+            if (_health == null)
+            {
+                Debug.LogError("Health is Null!");
+            }
         }
 
         private void Update()
         {
+            _navMeshAgent.enabled = !_health.IsDead();
             UpdateAnimator();
         }
 

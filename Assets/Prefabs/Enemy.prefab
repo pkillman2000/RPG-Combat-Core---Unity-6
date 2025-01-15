@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3972121344713444772, guid: bb73281ae161a8d4aa24222d839ba365, type: 3}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6166329940092848421, guid: bb73281ae161a8d4aa24222d839ba365, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -56,6 +60,10 @@ PrefabInstance:
       propertyPath: _health
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8035148257096231418, guid: bb73281ae161a8d4aa24222d839ba365, type: 3}
+      propertyPath: _healthPoints
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1871965511758574933, guid: bb73281ae161a8d4aa24222d839ba365, type: 3}
     m_RemovedGameObjects: []
@@ -70,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6166329940092848421, guid: bb73281ae161a8d4aa24222d839ba365, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8994961335317365067}
+    - targetCorrespondingSourceObject: {fileID: 6166329940092848421, guid: bb73281ae161a8d4aa24222d839ba365, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2755167574558632914}
   m_SourcePrefab: {fileID: 100100000, guid: bb73281ae161a8d4aa24222d839ba365, type: 3}
 --- !u!1 &5957682895946496420 stripped
 GameObject:
@@ -111,6 +122,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0152489a8616c4fa92135e2dbf2d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2755167574558632914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957682895946496420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3eb1dbe4403dad4e85f983f06127a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chaseDistance: 5
+  _suspicionTime: 3
+  _patrolPath: {fileID: 0}
+  _waypointTolerance: 0.5
+  _currentWaypointIndex: 0
 --- !u!4 &7813803727854683051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7732382012207428394, guid: bb73281ae161a8d4aa24222d839ba365, type: 3}
